@@ -247,7 +247,7 @@ function setLanguage(lang){
     document.getElementById("contact-text").textContent = languages[lang].contactText;
 }
 
-// تحميل وعرض الصورة الشخصية عند رفعها
+// رفع وعرض الصورة الشخصية
 function loadImage(event){
     const preview = document.getElementById("preview");
     preview.src = URL.createObjectURL(event.target.files[0]);
