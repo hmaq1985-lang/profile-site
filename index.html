@@ -1,80 +1,242 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الملف الشخصي</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 700px;
-            margin: 40px auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-        h1 {
-            margin-top: 0;
-            text-align: center;
-        }
-        .section {
-            margin-bottom: 25px;
-        }
-        .title {
-            font-size: 20px;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #333;
-        }
-        .text {
-            line-height: 1.7;
-            color: #555;
-        }
-        footer {
-            text-align: center;
-            padding-top: 20px;
-            color: #777;
-            font-size: 14px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الملف الشخصي - علي محمد عيسى اسحاقي</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin:0;
+    padding:0;
+    background:#f4f4f4;
+}
+header {
+    background:#005f99;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+.language-buttons button {
+    margin:5px;
+    padding:8px 12px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+.container {
+    max-width:700px;
+    margin:30px auto;
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+h1,h2 {
+    margin-top:0;
+}
+.section {
+    margin-bottom:25px;
+}
+.section-title {
+    font-weight:bold;
+    font-size:18px;
+    margin-bottom:8px;
+    color:#333;
+}
+.text, li {
+    line-height:1.6;
+    color:#555;
+}
+footer {
+    text-align:center;
+    margin-top:20px;
+    padding:15px;
+    background:#eee;
+}
+input[type="file"] {
+    margin-top:10px;
+}
+</style>
 </head>
-
 <body>
-    <div class="container">
 
-        <h1>الملف الشخصي</h1>
+<header>
+    <h1 id="name">علي محمد عيسى اسحاقي</h1>
+    <p id="title">رئيس الاتحاد البحريني لكرة اليد</p>
+    <div class="language-buttons">
+        <button onclick="setLanguage('ar')">عربي</button>
+        <button onclick="setLanguage('en')">English</button>
+        <button onclick="setLanguage('fr')">Français</button>
+        <button onclick="setLanguage('es')">Español</button>
+        <button onclick="setLanguage('de')">Deutsch</button>
+    </div>
+</header>
 
-        <div class="section">
-            <div class="title">الاسم</div>
-            <div class="text">الاسم الكامل يوضع هنا</div>
-        </div>
+<div class="container">
+    <div class="section">
+        <div class="section-title" id="about-title">نبذة مختصرة</div>
+        <p class="text" id="about-text">
+            علي محمد عيسى اسحاقي هو شخصية رياضية بارزة، يقود الاتحاد البحريني لكرة اليد بخبرة تمتد لأكثر من 16 عامًا، ملتزم بتطوير الرياضة والارتقاء بالفرق الوطنية.
+        </p>
+    </div>
 
-        <div class="section">
-            <div class="title">المسمى الوظيفي</div>
-            <div class="text">الوظيفة / المنصب</div>
-        </div>
+    <div class="section">
+        <div class="section-title" id="experience-title">الخبرات</div>
+        <ul class="text" id="experience-list">
+            <li>16 سنة رئيس الاتحاد البحريني لكرة اليد</li>
+            <li>قيادة برامج تطوير اللاعبين الشباب</li>
+            <li>إدارة البطولات المحلية والدولية</li>
+        </ul>
+    </div>
 
-        <div class="section">
-            <div class="title">نبذة مختصرة</div>
-            <div class="text">
-                يوضع هنا وصف قصير عن الخبرة والمهارات الأساسية.
-            </div>
-        </div>
+    <div class="section">
+        <div class="section-title" id="certs-title">الشهادات</div>
+        <ul class="text" id="certs-list">
+            <li>شهادة افتراضية 1</li>
+            <li>شهادة افتراضية 2</li>
+        </ul>
+    </div>
 
-        <div class="section">
-            <div class="title">السيرة الذاتية</div>
-            <div class="text">
-                <a href="#" target="_blank">رابط تحميل السيرة الذاتية</a>
-            </div>
-        </div>
+    <div class="section">
+        <div class="section-title" id="contact-title">التواصل</div>
+        <p class="text" id="contact-text">
+            📧 email@example.com | 📞 +973-00000000 | 🌐 www.example.com
+        </p>
+    </div>
 
-        <div class="section">
-            <div class="title">معلومات التواصل</div>
-            <div class="text">
-                البريد الإلكت
+    <div class="section">
+        <div class="section-title">الصورة الشخصية</div>
+        <input type="file" id="profile-pic" accept="image/*" onchange="loadImage(event)">
+        <br><img id="preview" src="" alt="صورة شخصية" style="margin-top:10px; max-width:100%; border-radius:12px;">
+    </div>
+</div>
+
+<footer>
+    © جميع الحقوق محفوظة
+</footer>
+
+<script>
+const languages = {
+    ar: {
+        dir:"rtl",
+        name:"علي محمد عيسى اسحاقي",
+        title:"رئيس الاتحاد البحريني لكرة اليد",
+        aboutTitle:"نبذة مختصرة",
+        aboutText:"علي محمد عيسى اسحاقي هو شخصية رياضية بارزة، يقود الاتحاد البحريني لكرة اليد بخبرة تمتد لأكثر من 16 عامًا، ملتزم بتطوير الرياضة والارتقاء بالفرق الوطنية.",
+        experienceTitle:"الخبرات",
+        experienceList:[
+            "16 سنة رئيس الاتحاد البحريني لكرة اليد",
+            "قيادة برامج تطوير اللاعبين الشباب",
+            "إدارة البطولات المحلية والدولية"
+        ],
+        certsTitle:"الشهادات",
+        certsList:["شهادة افتراضية 1","شهادة افتراضية 2"],
+        contactTitle:"التواصل",
+        contactText:"📧 email@example.com | 📞 +973-00000000 | 🌐 www.example.com"
+    },
+    en: {
+        dir:"ltr",
+        name:"Ali Mohamed Isa Ishaqi",
+        title:"President of Bahrain Handball Federation",
+        aboutTitle:"About",
+        aboutText:"Ali Mohamed Isa Ishaqi is a prominent sports figure, leading the Bahrain Handball Federation with over 16 years of experience, committed to developing the sport and elevating national teams.",
+        experienceTitle:"Experience",
+        experienceList:[
+            "16 years as President of Bahrain Handball Federation",
+            "Leading youth development programs",
+            "Managing local and international tournaments"
+        ],
+        certsTitle:"Certificates",
+        certsList:["Sample Certificate 1","Sample Certificate 2"],
+        contactTitle:"Contact",
+        contactText:"📧 email@example.com | 📞 +973-00000000 | 🌐 www.example.com"
+    },
+    fr: {
+        dir:"ltr",
+        name:"Ali Mohamed Isa Ishaqi",
+        title:"Président de la Fédération Bahreïnie de Handball",
+        aboutTitle:"À propos",
+        aboutText:"Ali Mohamed Isa Ishaqi est une figure sportive éminente, dirigeant la Fédération Bahreïnie de Handball avec plus de 16 ans d'expérience, engagé dans le développement du sport et l'élévation des équipes nationales.",
+        experienceTitle:"Expérience",
+        experienceList:[
+            "16 ans en tant que Président de la Fédération Bahreïnie de Handball",
+            "Direction des programmes de développement des jeunes",
+            "Gestion des tournois locaux et internationaux"
+        ],
+        certsTitle:"Certificats",
+        certsList:["Certificat 1 exemple","Certificat 2 exemple"],
+        contactTitle:"Contact",
+        contactText:"📧 email@example.com | 📞 +973-00000000 | 🌐 www.example.com"
+    },
+    es: {
+        dir:"ltr",
+        name:"Ali Mohamed Isa Ishaqi",
+        title:"Presidente de la Federación de Balonmano de Bahréin",
+        aboutTitle:"Acerca de",
+        aboutText:"Ali Mohamed Isa Ishaqi es una figura deportiva destacada, liderando la Federación de Balonmano de Bahréin con más de 16 años de experiencia, comprometido con el desarrollo del deporte y la elevación de los equipos nacionales.",
+        experienceTitle:"Experiencia",
+        experienceList:[
+            "16 años como Presidente de la Federación de Balonmano de Bahréin",
+            "Liderando programas de desarrollo juvenil",
+            "Gestión de torneos locales e internacionales"
+        ],
+        certsTitle:"Certificados",
+        certsList:["Certificado de ejemplo 1","Certificado de ejemplo 2"],
+        contactTitle:"Contacto",
+        contactText:"📧 email@example.com | 📞 +973-00000000 | 🌐 www.example.com"
+    },
+    de: {
+        dir:"ltr",
+        name:"Ali Mohamed Isa Ishaqi",
+        title:"Präsident des Bahrainischen Handballverbandes",
+        aboutTitle:"Über",
+        aboutText:"Ali Mohamed Isa Ishaqi ist eine herausragende Sportpersönlichkeit und leitet den Bahrainischen Handballverband mit über 16 Jahren Erfahrung, engagiert in der Sportentwicklung und Förderung der Nationalmannschaften.",
+        experienceTitle:"Erfahrung",
+        experienceList:[
+            "16 Jahre Präsident des Bahrainischen Handballverbandes",
+            "Leitung von Jugendentwicklungsprogrammen",
+            "Verwaltung lokaler und internationaler Turniere"
+        ],
+        certsTitle:"Zertifikate",
+        certsList:["Beispiel Zertifikat 1","Beispiel Zertifikat 2"],
+        contactTitle:"Kontakt",
+        contactText:"📧 email@example.com | 📞 +973-00000000 | 🌐 www.example.com"
+    }
+};
+
+function setLanguage(lang){
+    document.body.dir = languages[lang].dir;
+    document.getElementById("name").textContent = languages[lang].name;
+    document.getElementById("title").textContent = languages[lang].title;
+    document.getElementById("about-title").textContent = languages[lang].aboutTitle;
+    document.getElementById("about-text").textContent = languages[lang].aboutText;
+    document.getElementById("experience-title").textContent = languages[lang].experienceTitle;
+    const expList = document.getElementById("experience-list");
+    expList.innerHTML = "";
+    languages[lang].experienceList.forEach(item=>{
+        const li = document.createElement("li");
+        li.textContent = item;
+        expList.appendChild(li);
+    });
+    document.getElementById("certs-title").textContent = languages[lang].certsTitle;
+    const certsList = document.getElementById("certs-list");
+    certsList.innerHTML = "";
+    languages[lang].certsList.forEach(item=>{
+        const li = document.createElement("li");
+        li.textContent = item;
+        certsList.appendChild(li);
+    });
+    document.getElementById("contact-title").textContent = languages[lang].contactTitle;
+    document.getElementById("contact-text").textContent = languages[lang].contactText;
+}
+
+// تحميل وعرض الصورة الشخصية
+function loadImage(event){
+    const preview = document.getElementById("preview");
+    preview.src = URL.createObjectURL(event.target.files[0]);
+}
+</script>
+
+</body>
+</html>
