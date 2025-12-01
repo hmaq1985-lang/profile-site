@@ -3,19 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>الملف الشخصي - علي محمد عيسى اسحاقي</title>
+<title>علي محمد عيسى اسحاقي - رئيس الاتحاد البحريني لكرة اليد</title>
 <style>
 body {
-    font-family: Arial, sans-serif;
-    margin:0;
-    padding:0;
-    background:#f4f4f4;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom right, #e0f2f1, #ffffff);
 }
 header {
-    background:#005f99;
-    color:white;
-    padding:20px;
-    text-align:center;
+    background-color: #00796b;
+    color: white;
+    padding: 25px 20px;
+    text-align: center;
+}
+header img#preview {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 .language-buttons button {
     margin:5px;
@@ -23,47 +30,73 @@ header {
     border:none;
     border-radius:5px;
     cursor:pointer;
+    background:#004d40;
+    color:white;
+    transition: 0.3s;
+}
+.language-buttons button:hover {
+    background:#00695c;
 }
 .container {
-    max-width:700px;
+    max-width:800px;
     margin:30px auto;
     background:white;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.15);
 }
 h1,h2 {
     margin-top:0;
 }
 .section {
-    margin-bottom:25px;
+    margin-bottom:30px;
 }
 .section-title {
     font-weight:bold;
-    font-size:18px;
-    margin-bottom:8px;
-    color:#333;
+    font-size:20px;
+    margin-bottom:12px;
+    color:#00796b;
+    border-bottom:2px solid #004d40;
+    display:inline-block;
+    padding-bottom:5px;
 }
 .text, li {
-    line-height:1.6;
-    color:#555;
+    line-height:1.7;
+    color:#333;
+}
+ul {
+    padding-left: 20px;
 }
 footer {
     text-align:center;
-    margin-top:20px;
-    padding:15px;
-    background:#eee;
+    margin-top:30px;
+    padding:20px;
+    background:#004d40;
+    color:white;
 }
-input[type="file"] {
-    margin-top:10px;
+button.download-cv {
+    background:#00796b;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.3s;
+}
+button.download-cv:hover {
+    background:#004d40;
 }
 </style>
 </head>
 <body>
 
 <header>
+    <!-- صورة افتراضية للرئيس -->
+    <img id="preview" src="https://via.placeholder.com/150" alt="صورة الرئيس">
+    
     <h1 id="name">علي محمد عيسى اسحاقي</h1>
     <p id="title">رئيس الاتحاد البحريني لكرة اليد</p>
+
     <div class="language-buttons">
         <button onclick="setLanguage('ar')">عربي</button>
         <button onclick="setLanguage('en')">English</button>
@@ -106,9 +139,7 @@ input[type="file"] {
     </div>
 
     <div class="section">
-        <div class="section-title">الصورة الشخصية</div>
-        <input type="file" id="profile-pic" accept="image/*" onchange="loadImage(event)">
-        <br><img id="preview" src="" alt="صورة شخصية" style="margin-top:10px; max-width:100%; border-radius:12px;">
+        <button class="download-cv" onclick="downloadCV()">تحميل السيرة الذاتية</button>
     </div>
 </div>
 
@@ -125,11 +156,7 @@ const languages = {
         aboutTitle:"نبذة مختصرة",
         aboutText:"علي محمد عيسى اسحاقي هو شخصية رياضية بارزة، يقود الاتحاد البحريني لكرة اليد بخبرة تمتد لأكثر من 16 عامًا، ملتزم بتطوير الرياضة والارتقاء بالفرق الوطنية.",
         experienceTitle:"الخبرات",
-        experienceList:[
-            "16 سنة رئيس الاتحاد البحريني لكرة اليد",
-            "قيادة برامج تطوير اللاعبين الشباب",
-            "إدارة البطولات المحلية والدولية"
-        ],
+        experienceList:["16 سنة رئيس الاتحاد البحريني لكرة اليد","قيادة برامج تطوير اللاعبين الشباب","إدارة البطولات المحلية والدولية"],
         certsTitle:"الشهادات",
         certsList:["شهادة افتراضية 1","شهادة افتراضية 2"],
         contactTitle:"التواصل",
@@ -142,11 +169,7 @@ const languages = {
         aboutTitle:"About",
         aboutText:"Ali Mohamed Isa Ishaqi is a prominent sports figure, leading the Bahrain Handball Federation with over 16 years of experience, committed to developing the sport and elevating national teams.",
         experienceTitle:"Experience",
-        experienceList:[
-            "16 years as President of Bahrain Handball Federation",
-            "Leading youth development programs",
-            "Managing local and international tournaments"
-        ],
+        experienceList:["16 years as President of Bahrain Handball Federation","Leading youth development programs","Managing local and international tournaments"],
         certsTitle:"Certificates",
         certsList:["Sample Certificate 1","Sample Certificate 2"],
         contactTitle:"Contact",
@@ -159,11 +182,7 @@ const languages = {
         aboutTitle:"À propos",
         aboutText:"Ali Mohamed Isa Ishaqi est une figure sportive éminente, dirigeant la Fédération Bahreïnie de Handball avec plus de 16 ans d'expérience, engagé dans le développement du sport et l'élévation des équipes nationales.",
         experienceTitle:"Expérience",
-        experienceList:[
-            "16 ans en tant que Président de la Fédération Bahreïnie de Handball",
-            "Direction des programmes de développement des jeunes",
-            "Gestion des tournois locaux et internationaux"
-        ],
+        experienceList:["16 ans en tant que Président de la Fédération Bahreïnie de Handball","Direction des programmes de développement des jeunes","Gestion des tournois locaux et internationaux"],
         certsTitle:"Certificats",
         certsList:["Certificat 1 exemple","Certificat 2 exemple"],
         contactTitle:"Contact",
@@ -176,11 +195,7 @@ const languages = {
         aboutTitle:"Acerca de",
         aboutText:"Ali Mohamed Isa Ishaqi es una figura deportiva destacada, liderando la Federación de Balonmano de Bahréin con más de 16 años de experiencia, comprometido con el desarrollo del deporte y la elevación de los equipos nacionales.",
         experienceTitle:"Experiencia",
-        experienceList:[
-            "16 años como Presidente de la Federación de Balonmano de Bahréin",
-            "Liderando programas de desarrollo juvenil",
-            "Gestión de torneos locales e internacionales"
-        ],
+        experienceList:["16 años como Presidente de la Federación de Balonmano de Bahréin","Liderando programas de desarrollo juvenil","Gestión de torneos locales e internacionales"],
         certsTitle:"Certificados",
         certsList:["Certificado de ejemplo 1","Certificado de ejemplo 2"],
         contactTitle:"Contacto",
@@ -193,11 +208,7 @@ const languages = {
         aboutTitle:"Über",
         aboutText:"Ali Mohamed Isa Ishaqi ist eine herausragende Sportpersönlichkeit und leitet den Bahrainischen Handballverband mit über 16 Jahren Erfahrung, engagiert in der Sportentwicklung und Förderung der Nationalmannschaften.",
         experienceTitle:"Erfahrung",
-        experienceList:[
-            "16 Jahre Präsident des Bahrainischen Handballverbandes",
-            "Leitung von Jugendentwicklungsprogrammen",
-            "Verwaltung lokaler und internationaler Turniere"
-        ],
+        experienceList:["16 Jahre Präsident des Bahrainischen Handballverbandes","Leitung von Jugendentwicklungsprogrammen","Verwaltung lokaler und internationaler Turniere"],
         certsTitle:"Zertifikate",
         certsList:["Beispiel Zertifikat 1","Beispiel Zertifikat 2"],
         contactTitle:"Kontakt",
@@ -231,10 +242,9 @@ function setLanguage(lang){
     document.getElementById("contact-text").textContent = languages[lang].contactText;
 }
 
-// تحميل وعرض الصورة الشخصية
-function loadImage(event){
-    const preview = document.getElementById("preview");
-    preview.src = URL.createObjectURL(event.target.files[0]);
+// زر تحميل السيرة الذاتية (افتراضي)
+function downloadCV(){
+    alert("سيتم تنزيل السيرة الذاتية (يمكن استبدال الرابط لاحقًا)");
 }
 </script>
 
